@@ -92,12 +92,22 @@ function registerUserEvents(canvas, ctx) {
 
 }
 
+// Save | Download image
+function downloadImage(data, filename = 'untitled.jpeg') {
+    var a = document.createElement('a');
+    a.href = data;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+}
+
 function initActionButtons(canvas, ctx) {
     window.eraserEnabled = false
     var actions = document.getElementById('actions');
     var eraser = document.getElementById('eraser');
     var brush = document.getElementById('brush');
     var clear = document.getElementById('clear');
+    var download = document.getElementById('download');
     eraser.addEventListener('click', function () {
         window.eraserEnabled = true
         eraser.classList.add('active')
@@ -110,7 +120,11 @@ function initActionButtons(canvas, ctx) {
     })
     clear.addEventListener('click', function () {
         ctx.clearRect(0, 0, canvas.width, canvas.height)
-    })    
+    })
+    download.addEventListener('click', function () {
+        var dataURL = canvas.toDataURL("image/png")
+        downloadImage(dataURL, '我的画-在线画板.png');
+    })
 }
 
 function initColorButtons(ctx) {
@@ -149,10 +163,16 @@ function initPenSizeButtons(ctx) {
     }) 
 }
 
+function initCanvasBackground(canvas, ctx) {
+    ctx.fillStyle = 'white'
+    ctx.fillRect(0, 0, canvas.width, canvas.height)
+}
 function __main() {
     var canvas = document.getElementById('canvas')
     var ctx = canvas.getContext('2d')
     autoSetCanvasSize(canvas)
+    initCanvasBackground(canvas, ctx)
+
     initActionButtons(canvas, ctx)
     initColorButtons(ctx)
     initPenSizeButtons(ctx)
