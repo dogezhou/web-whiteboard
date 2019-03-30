@@ -99,20 +99,47 @@ function initActionButtons() {
     var brush = document.getElementById('brush');
     eraser.addEventListener('click', function () {
         window.eraserEnabled = true
-        actions.className = 'actions painting'
+        eraser.classList.add('active')
+        brush.classList.remove('active')
     })
     brush.addEventListener('click', function () {
         window.eraserEnabled = false
-        actions.className = 'actions'
+        brush.classList.add('active')
+        eraser.classList.remove('active')
     })
 }
 
+function initColorButtons(ctx) {
+    var colors = document.querySelector('.colors')
+    var colorsList = document.querySelectorAll('.colors .color')
+
+    var activeColor = document.querySelector('.colors .color.active')
+    ctx.strokeStyle = activeColor.dataset.color
+
+    colorsList.forEach(function (element) {
+        var color = element.dataset.color
+        window.colorsList = colorsList
+        element.style.background = color
+    })
+    colors.addEventListener('click', function (e) {
+        var element = e.target
+        if (!element.classList.contains('color')) { return }
+
+        var color = element.dataset.color
+        colorsList.forEach(function (element) {
+            element.classList.remove('active')
+        })
+        element.classList.add('active')
+        ctx.strokeStyle = color
+    })      
+}
 
 function __main() {
     var canvas = document.getElementById('canvas')
     var ctx = canvas.getContext('2d')
     autoSetCanvasSize(canvas)
     initActionButtons()
+    initColorButtons(ctx)
     registerUserEvents(canvas, ctx)
 }
 
