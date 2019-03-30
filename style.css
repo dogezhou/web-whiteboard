@@ -1,0 +1,24 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#canvas {
+    display: block;
+}
+
+#actions {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+}
+#actions > #brush {
+    display: none;
+}
+#actions.painting > #brush {
+    display: inline-block;
+}
+#actions.painting > #eraser {
+    display: none;
+}
