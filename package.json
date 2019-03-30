@@ -1,0 +1,22 @@
+{
+  "name": "web-whiteboard",
+  "version": "1.0.0",
+  "description": "本项目用 js canvas 制作一个在线的画板",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dogezhou/web-whiteboard.git"
+  },
+  "keywords": [
+    "canvas"
+  ],
+  "author": "dogezhou",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dogezhou/web-whiteboard/issues"
+  },
+  "homepage": "https://github.com/dogezhou/web-whiteboard#readme"
+}
