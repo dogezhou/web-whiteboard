@@ -53,3 +53,21 @@ ul, ol {
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.9);
     transform: scale(1.2)
 }
+
+.sizes {
+    position: fixed;
+    right: 20px;
+    top: 10px;
+}
+.sizes > .size {
+    height: 0;
+    width: 20px;
+    margin: 10px 0;
+    
+}
+.sizes > .thin {
+    border-top: 3px solid black
+}
+.sizes > .thick {
+    border-top: 10px solid black
+}
