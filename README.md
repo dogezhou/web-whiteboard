@@ -216,7 +216,7 @@ canvas.addEventListener('mousemove', function(e) {
 ```
 
 ### 3. 橡皮擦的细节错误
-由于 ctx.clearRect 的清除的是以 x, y 为左上角的正方形，所以用起来就像一鼠标为左上角，优化一下就要
+由于 ctx.clearRect 的清除的是以 x, y 为左上角的正方形，所以用起来就像以鼠标为左上角，优化一下就要
 ```js
 ctx.clearRect(x - 5, y - 5, 10, 10)
 ```
