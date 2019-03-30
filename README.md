@@ -1,5 +1,7 @@
 # web-whiteboard
 本项目用 js canvas 制作一个在线的画板
+- [源码](https://github.com/dogezhou/web-whiteboard)
+- [在线预览](https://dogezhou.github.io/web-whiteboard/)
 
 ## 一、 鼠标事件
 画板主要用鼠标进行交互，所以我们需要监听一些鼠标事件:  
