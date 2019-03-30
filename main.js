@@ -16,10 +16,10 @@ function autoSetCanvasSize(canvas) {
     }
 }
 
-function drawLine(ctx, x1, y1, x2, y2, width) {
+function drawLine(ctx, x1, y1, x2, y2) {
     ctx.beginPath()
     ctx.moveTo(x1, y1)
-    ctx.lineWidth = width
+    ctx.lineWidth = window.lineWidth || 5
     ctx.lineTo(x2, y2)
     ctx.stroke()
     ctx.closePath()
@@ -81,7 +81,7 @@ function registerUserEvents(canvas, ctx) {
                 ctx.clearRect(x - 5, y - 5, 10, 10)
             } else {
                 var newPoint = { x: x, y: y }
-                drawLine(ctx, lastPoint.x, lastPoint.y, newPoint.x, newPoint.y, 5)
+                drawLine(ctx, lastPoint.x, lastPoint.y, newPoint.x, newPoint.y)
                 lastPoint = newPoint
             }            
         })
@@ -92,11 +92,22 @@ function registerUserEvents(canvas, ctx) {
 
 }
 
-function initActionButtons() {
+// Save | Download image
+function downloadImage(data, filename = 'untitled.jpeg') {
+    var a = document.createElement('a');
+    a.href = data;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+}
+
+function initActionButtons(canvas, ctx) {
     window.eraserEnabled = false
     var actions = document.getElementById('actions');
     var eraser = document.getElementById('eraser');
     var brush = document.getElementById('brush');
+    var clear = document.getElementById('clear');
+    var download = document.getElementById('download');
     eraser.addEventListener('click', function () {
         window.eraserEnabled = true
         eraser.classList.add('active')
@@ -106,6 +117,13 @@ function initActionButtons() {
         window.eraserEnabled = false
         brush.classList.add('active')
         eraser.classList.remove('active')
+    })
+    clear.addEventListener('click', function () {
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
+    })
+    download.addEventListener('click', function () {
+        var dataURL = canvas.toDataURL("image/png")
+        downloadImage(dataURL, '我的画-在线画板.png');
     })
 }
 
@@ -134,12 +152,30 @@ function initColorButtons(ctx) {
     })      
 }
 
+function initPenSizeButtons(ctx) {
+    var thin = document.querySelector('.sizes .thin')
+    var thick = document.querySelector('.sizes .thick')
+    thin.addEventListener('click', function (e) {
+        window.lineWidth = 5
+    })
+    thick.addEventListener('click', function (e) {
+        window.lineWidth = 10
+    }) 
+}
+
+function initCanvasBackground(canvas, ctx) {
+    ctx.fillStyle = 'white'
+    ctx.fillRect(0, 0, canvas.width, canvas.height)
+}
 function __main() {
     var canvas = document.getElementById('canvas')
     var ctx = canvas.getContext('2d')
     autoSetCanvasSize(canvas)
-    initActionButtons()
+    initCanvasBackground(canvas, ctx)
+
+    initActionButtons(canvas, ctx)
     initColorButtons(ctx)
+    initPenSizeButtons(ctx)
     registerUserEvents(canvas, ctx)
 }
 
