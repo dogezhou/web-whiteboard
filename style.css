@@ -3,6 +3,16 @@
     margin: 0;
     box-sizing: border-box;
 }
+ul, ol {
+    list-style: none;
+}
+
+.icon {
+    width: 1em; height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+}
 
 #canvas {
     display: block;
@@ -10,15 +20,36 @@
 
 #actions {
     position: fixed;
-    top: 10px;
-    left: 10px;
+    top: 0px;
+    left: 0px;
+    padding: 16px;
 }
-#actions > #brush {
-    display: none;
+#actions .icon {
+    margin: 0 8px;
+    width: 2em;
+    height: 2em;
+    transition: all 0.3s;
 }
-#actions.painting > #brush {
-    display: inline-block;
+
+#actions .icon.active {
+    fill: purple;
+    transform: scale(1.2)
 }
-#actions.painting > #eraser {
-    display: none;
+
+.colors {
+    position: fixed;
+    top: 60px;
+    left: 23px;
+}
+.colors > .color {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+    margin: 12px 0;
+    transition: all 0.3s;
+}
+.colors > .color.active {
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.9);
+    transform: scale(1.2)
 }

@@ -1,18 +1,33 @@
 <!DOCTYPE html>
 <html lang="zh-Hans">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>web-whiteboard</title>
+    <title>在线画板 - web-whiteboard</title>
     <link rel="stylesheet" href="style.css">
+    <script src="//at.alicdn.com/t/font_1117393_5tvry4h1mp3.js"></script>
 </head>
+
 <body>
     <canvas id="canvas" width=400 height=400></canvas>
     <div id="actions">
-        <button id="brush">画笔</button>
-        <button id="eraser">橡皮擦</button>
+        <svg id="brush" class="icon active">
+            <use xlink:href="#icon-Pencil"></use>
+        </svg>
+        <svg id="eraser" class="icon">
+            <use xlink:href="#icon-eraser"></use>
+        </svg>
     </div>
+    <ol class="colors">
+        <li data-color="#70FF56" class="color active"></li>
+        <li data-color="#FB6164" class="color"></li>
+        <li data-color="#FFE931" class="color"></li>
+        <li data-color="#83FFB6" class="color"></li>
+        <li data-color="#FF7520" class="color"></li>
+    </ol>
     <script src="./main.js"></script>
 </body>
+
 </html>
