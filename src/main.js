@@ -97,6 +97,7 @@ function downloadImage(data, filename = 'untitled.jpeg') {
     var a = document.createElement('a');
     a.href = data;
     a.download = filename;
+    a.target = '_blank';
     document.body.appendChild(a);
     a.click();
 }
@@ -167,12 +168,24 @@ function initCanvasBackground(canvas, ctx) {
     ctx.fillStyle = 'white'
     ctx.fillRect(0, 0, canvas.width, canvas.height)
 }
+
+/** 
+ * 解决浏览器下拉刷新无法画问题
+ * https://www.jianshu.com/p/04092ebe3b76
+ * */
+function disableScroll() {
+    document.body.addEventListener('touchmove', function (e) {
+        e.preventDefault()
+    })
+}
+
 function __main() {
+
     var canvas = document.getElementById('canvas')
     var ctx = canvas.getContext('2d')
     autoSetCanvasSize(canvas)
     initCanvasBackground(canvas, ctx)
-
+    disableScroll()
     initActionButtons(canvas, ctx)
     initColorButtons(ctx)
     initPenSizeButtons(ctx)
