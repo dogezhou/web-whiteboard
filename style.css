@@ -16,6 +16,10 @@ ul, ol {
 
 #canvas {
     display: block;
+    /* 解决浏览器下拉刷新无法画问题 */
+    position: fixed;
+    top: 0;
+    left: 0;
 }
 
 #actions {
@@ -62,7 +66,7 @@ ul, ol {
 .sizes > .size {
     height: 0;
     width: 20px;
-    margin: 10px 0;
+    margin: 15px 0;
     
 }
 .sizes > .thin {
