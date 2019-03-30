@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/dogezhou/web-whiteboard/issues"
   },
-  "homepage": "https://github.com/dogezhou/web-whiteboard#readme"
+  "homepage": "https://github.com/dogezhou/web-whiteboard#readme",
+  "devDependencies": {
+    "gh-pages": "^2.0.1"
+  }
 }
