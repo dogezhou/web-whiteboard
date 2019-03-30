@@ -221,3 +221,20 @@ canvas.addEventListener('mousemove', function(e) {
 ctx.clearRect(x - 5, y - 5, 10, 10)
 ```
 
+## 五、移动端支持
+
+### 1. 移动端检测
+移动端没有 mouse 事件，所以应该使用对应的 touchstart, touchmove, touchend 事件。但是如何同时支持PC 和移动端呢？那就需要检测当前页面是否支持 touch 事件，如果支持就使用监听 touch，没有就 mouse。
+```js
+document.body.ontouchstart === undefined
+```
+注意没有直接判断是手机还是PC，直接检测了是否支持触屏，因为现在有很多二合一的设备，所有特性检测就行了。
+
+### 2. 多点触控处理
+TouchEvent 中的 touches 收集了用户多点触控的信息，直接使用第一个点
+```js
+canvas.addEventListener('touchstart', function (e) {
+    var x = e.touches[0].clientX
+    var y = e.touches[0].clientY
+})
+```
