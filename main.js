@@ -19,7 +19,7 @@ function autoSetCanvasSize(canvas) {
 function drawLine(ctx, x1, y1, x2, y2) {
     ctx.beginPath()
     ctx.moveTo(x1, y1)
-    ctx.lineWidth = window.lineWidth || 5
+    ctx.lineWidth = window.lineWidth || 3
     ctx.lineTo(x2, y2)
     ctx.stroke()
     ctx.closePath()
@@ -157,10 +157,10 @@ function initPenSizeButtons(ctx) {
     var thin = document.querySelector('.sizes .thin')
     var thick = document.querySelector('.sizes .thick')
     thin.addEventListener('click', function (e) {
-        window.lineWidth = 5
+        window.lineWidth = 3
     })
     thick.addEventListener('click', function (e) {
-        window.lineWidth = 10
+        window.lineWidth = 6
     }) 
 }
 
