@@ -1,4 +1,6 @@
 # web-whiteboard
+![whiteboard-screenshot](https://raw.githubusercontent.com/dogezhou/web-whiteboard/master/screenshots/screenshot.png) 
+
 本项目用 js canvas 制作一个在线的画板
 - [源码](https://github.com/dogezhou/web-whiteboard)
 - [在线预览](https://dogezhou.github.io/web-whiteboard/)
