@@ -238,3 +238,7 @@ canvas.addEventListener('touchstart', function (e) {
     var y = e.touches[0].clientY
 })
 ```
+
+### 3. 浏览器下拉刷新无法画画的问题
+可以阻止 touch 事件的传播
+参考[这篇文章](https://www.jianshu.com/p/04092ebe3b76)
